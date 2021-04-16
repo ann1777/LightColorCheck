@@ -8,12 +8,16 @@ class Main {
         while(true) {
             Scanner input = new Scanner(System.in);
             String k = input.next();
-            if(Objects.equals(k, "Stop")){
+            if(k.equalsIgnoreCase("Stop")){
                 System.out.println("Завершение программы.");
                 break;
             }
-            float l = Float.parseFloat(k);
-            new CheckLightColor(l);
+            try {
+                float l = Float.parseFloat(k);
+                new CheckLightColor(l);
+            } catch (NumberFormatException nfe) {
+                System.out.println("Вы ввели некорректные данные.");
+            }
             System.out.println("Введите следующую длину волны L: ");
         }
     }
